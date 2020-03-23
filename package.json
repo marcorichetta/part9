@@ -4,7 +4,8 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"bmi": "ts-node bmiCalculator"
+		"bmi": "ts-node bmiCalculator",
+		"exercise": "ts-node exerciseCalculator"
 	},
 	"devDependencies": {
 		"@types/node": "^13.9.3",
