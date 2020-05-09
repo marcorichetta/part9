@@ -1,5 +1,10 @@
-const bmiCalc = (h: number, mass: number): void => {
-	const sqtHeight = h / 100;
+interface IBmiValues {
+	value1: number;
+	value2: number;
+}
+
+const bmiCalc = (height: number, mass: number): void => {
+	const sqtHeight = height / 100;
 
 	const bmi = mass / (sqtHeight * sqtHeight);
 
@@ -22,4 +27,22 @@ const bmiCalc = (h: number, mass: number): void => {
 	}
 };
 
-console.log(bmiCalc(180, 74));
+const parseArguments = (args: Array<string>): IBmiValues => {
+	if (args.length !== 4) throw new Error("Args must be only 2");
+
+	if (!isNaN(Number(args[2])) && !isNaN(Number(args[3]))) {
+		return {
+			value1: Number(args[2]),
+			value2: Number(args[3]),
+		};
+	} else {
+		throw new Error("Provided values must be numbers!");
+	}
+};
+
+try {
+	const { value1, value2 } = parseArguments(process.argv);
+	bmiCalc(value1, value2);
+} catch (e) {
+	console.log("Error, something bad happened, message: ", e.message);
+}

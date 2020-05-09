@@ -8,11 +8,11 @@ interface IResult {
 	ratingDescription: string;
 }
 
-const calculateExercises = (dailyHours: number[] = [3, 0, 2, 4.5, 0, 3, 1]): IResult => {
+const calculateExercises = (target: number, dailyHours: number[]): IResult => {
 	const periodLength = dailyHours.length;
 
 	// Dias con al menos 1 hora de entrenamiento
-	const trainedDays: number[] = dailyHours.filter(day => day !== 0);
+	const trainedDays: number[] = dailyHours.filter((day) => day !== 0);
 
 	const trainingDays: number = trainedDays.length;
 
@@ -23,8 +23,6 @@ const calculateExercises = (dailyHours: number[] = [3, 0, 2, 4.5, 0, 3, 1]): IRe
 	);
 
 	const average = totalHours / periodLength;
-
-	const target = 2;
 
 	const success: boolean = average >= target ? true : false;
 
@@ -49,8 +47,22 @@ const calculateExercises = (dailyHours: number[] = [3, 0, 2, 4.5, 0, 3, 1]): IRe
 		rating,
 		ratingDescription,
 		target,
-		average
+		average,
 	};
 };
 
-console.log(calculateExercises());
+const parseArgs = (args: Array<string>): Array<number> => {
+	if (args.length !== 12) throw new Error("Args must be 10");
+
+	// Cast every arg into a number
+	const parameters = args.slice(2).map((arg) => Number(arg));
+
+	return parameters;
+};
+
+try {
+	const [target, ...values] = parseArgs(process.argv);
+	console.log(calculateExercises(target, values));
+} catch (e) {
+	console.log("Error, something bad happened, message: ", e.message);
+}
