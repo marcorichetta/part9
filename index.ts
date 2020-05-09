@@ -15,10 +15,10 @@ app.get("/bmi", (req, res) => {
 		res.json({ error: "Malformatted parameters" });
 	}
 
-	let h = Number(height);
-	let w = Number(weight);
+	const h = Number(height);
+	const w = Number(weight);
 
-	let result = bmiCalc(h, w);
+	const result = bmiCalc(h, w);
 
 	res.json(result);
 });

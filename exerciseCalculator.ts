@@ -1,4 +1,4 @@
-interface IResult {
+interface Result {
 	periodLength: number;
 	trainingDays: number;
 	target: number;
@@ -8,7 +8,7 @@ interface IResult {
 	ratingDescription: string;
 }
 
-const calculateExercises = (target: number, dailyHours: number[]): IResult => {
+const calculateExercises = (target: number, dailyHours: number[]): Result => {
 	const periodLength = dailyHours.length;
 
 	// Dias con al menos 1 hora de entrenamiento
@@ -26,8 +26,8 @@ const calculateExercises = (target: number, dailyHours: number[]): IResult => {
 
 	const success: boolean = average >= target ? true : false;
 
-	let rating: number = 0;
-	let ratingDescription: string = "";
+	let rating = 0;
+	let ratingDescription = "";
 
 	if (average / target > 1) {
 		rating = 2;

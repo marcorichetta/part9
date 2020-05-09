@@ -1,18 +1,18 @@
-interface IBmiValues {
+interface BmiValues {
 	height: number;
 	weight: number;
 }
 
-interface IResults extends IBmiValues {
+interface Results extends BmiValues {
 	result: string;
 }
 
-export const bmiCalc = (height: number, weight: number): IResults => {
+export const bmiCalc = (height: number, weight: number): Results => {
 	const sqtHeight = height / 100;
 
 	const bmi = weight / (sqtHeight * sqtHeight);
 
-	let bmiResult: string = "";
+	let bmiResult = "";
 
 	if (bmi < 15) {
 		bmiResult = `Very severely underweight`;
@@ -47,7 +47,7 @@ export const bmiCalc = (height: number, weight: number): IResults => {
 	};
 };
 
-const parseArguments = (args: Array<string>): IBmiValues => {
+const parseArguments = (args: Array<string>): BmiValues => {
 	if (args.length !== 4) throw new Error("Args must be only 2");
 
 	if (!isNaN(Number(args[2])) && !isNaN(Number(args[3]))) {
