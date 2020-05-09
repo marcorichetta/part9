@@ -26,8 +26,8 @@ const calculateExercises = (target: number, dailyHours: number[]): IResult => {
 
 	const success: boolean = average >= target ? true : false;
 
-	let rating: number;
-	let ratingDescription: string;
+	let rating: number = 0;
+	let ratingDescription: string = "";
 
 	if (average / target > 1) {
 		rating = 2;
