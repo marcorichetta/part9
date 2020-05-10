@@ -8,7 +8,7 @@ interface Result {
 	ratingDescription: string;
 }
 
-const calculateExercises = (target: number, dailyHours: number[]): Result => {
+export const calculateExercises = (target: number, dailyHours: number[]): Result => {
 	const periodLength = dailyHours.length;
 
 	// Dias con al menos 1 hora de entrenamiento
